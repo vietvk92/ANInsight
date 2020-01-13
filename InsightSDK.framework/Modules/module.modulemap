@@ -1,0 +1,11 @@
+framework module InsightSDK {
+  umbrella header "InsightSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module InsightSDK.Swift {
+    header "InsightSDK-Swift.h"
+    requires objc
+}
