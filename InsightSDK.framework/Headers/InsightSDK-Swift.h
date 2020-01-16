@@ -206,10 +206,37 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
+  ITActionEventITActionEventScreenView = 0,
+  ITActionEventITActionEventIdentify = 1,
+  ITActionEventITActionEventSignOut = 2,
+  ITActionEventITActionEventProductSearch = 3,
+  ITActionEventITActionEventProductListView = 4,
+  ITActionEventITActionEventProductListFilter = 5,
+  ITActionEventITActionEventProductClick = 6,
+  ITActionEventITActionEventProductView = 7,
+  ITActionEventITActionEventAddToCart = 8,
+  ITActionEventITActionEventRemoveCart = 9,
+  ITActionEventITActionEventViewCart = 10,
+  ITActionEventITActionEventCheckout = 11,
+  ITActionEventITActionEventProductPayment = 12,
+  ITActionEventITActionEventProductPurchase = 13,
+  ITActionEventITActionEventAdvertisingImpression = 14,
+  ITActionEventITActionEventAdvertisingView = 15,
+  ITActionEventITActionEventAdvertisingClick = 16,
+  ITActionEventITActionEventAllowNotification = 17,
+};
+
+@class ITContextObj;
+@class ITExtraObj;
+@class ITDimsObj;
+@class ITItemObj;
 
 SWIFT_CLASS_NAMED("ITAnalytic")
 @interface ITAnalytics : NSObject
-+ (void)configure:(NSString * _Nullable)portalID :(NSString * _Nullable)propertyID;
++ (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
++ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
++ (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -516,10 +543,37 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
+  ITActionEventITActionEventScreenView = 0,
+  ITActionEventITActionEventIdentify = 1,
+  ITActionEventITActionEventSignOut = 2,
+  ITActionEventITActionEventProductSearch = 3,
+  ITActionEventITActionEventProductListView = 4,
+  ITActionEventITActionEventProductListFilter = 5,
+  ITActionEventITActionEventProductClick = 6,
+  ITActionEventITActionEventProductView = 7,
+  ITActionEventITActionEventAddToCart = 8,
+  ITActionEventITActionEventRemoveCart = 9,
+  ITActionEventITActionEventViewCart = 10,
+  ITActionEventITActionEventCheckout = 11,
+  ITActionEventITActionEventProductPayment = 12,
+  ITActionEventITActionEventProductPurchase = 13,
+  ITActionEventITActionEventAdvertisingImpression = 14,
+  ITActionEventITActionEventAdvertisingView = 15,
+  ITActionEventITActionEventAdvertisingClick = 16,
+  ITActionEventITActionEventAllowNotification = 17,
+};
+
+@class ITContextObj;
+@class ITExtraObj;
+@class ITDimsObj;
+@class ITItemObj;
 
 SWIFT_CLASS_NAMED("ITAnalytic")
 @interface ITAnalytics : NSObject
-+ (void)configure:(NSString * _Nullable)portalID :(NSString * _Nullable)propertyID;
++ (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
++ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
++ (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
