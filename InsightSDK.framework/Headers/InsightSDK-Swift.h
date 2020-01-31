@@ -209,22 +209,24 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
   ITActionEventITActionEventScreenView = 0,
   ITActionEventITActionEventIdentify = 1,
-  ITActionEventITActionEventSignOut = 2,
-  ITActionEventITActionEventProductSearch = 3,
-  ITActionEventITActionEventProductListView = 4,
-  ITActionEventITActionEventProductListFilter = 5,
-  ITActionEventITActionEventProductClick = 6,
-  ITActionEventITActionEventProductView = 7,
-  ITActionEventITActionEventAddToCart = 8,
-  ITActionEventITActionEventRemoveCart = 9,
-  ITActionEventITActionEventViewCart = 10,
-  ITActionEventITActionEventCheckout = 11,
-  ITActionEventITActionEventProductPayment = 12,
-  ITActionEventITActionEventProductPurchase = 13,
-  ITActionEventITActionEventAdvertisingImpression = 14,
-  ITActionEventITActionEventAdvertisingView = 15,
-  ITActionEventITActionEventAdvertisingClick = 16,
-  ITActionEventITActionEventAllowNotification = 17,
+  ITActionEventITActionEventUserRegister = 2,
+  ITActionEventITActionEventSignIn = 3,
+  ITActionEventITActionEventSignOut = 4,
+  ITActionEventITActionEventProductSearch = 5,
+  ITActionEventITActionEventProductListView = 6,
+  ITActionEventITActionEventProductListFilter = 7,
+  ITActionEventITActionEventProductClick = 8,
+  ITActionEventITActionEventProductView = 9,
+  ITActionEventITActionEventAddToCart = 10,
+  ITActionEventITActionEventRemoveCart = 11,
+  ITActionEventITActionEventViewCart = 12,
+  ITActionEventITActionEventProductCheckout = 13,
+  ITActionEventITActionEventProductPayment = 14,
+  ITActionEventITActionEventProductPurchase = 15,
+  ITActionEventITActionEventAdvertisingImpression = 16,
+  ITActionEventITActionEventAdvertisingView = 17,
+  ITActionEventITActionEventAdvertisingClick = 18,
+  ITActionEventITActionEventAllowPushNotification = 19,
 };
 
 @class ITContextObj;
@@ -264,13 +266,26 @@ SWIFT_CLASS("_TtC10InsightSDK10ITExtraObj")
 
 SWIFT_CLASS("_TtC10InsightSDK9ITItemObj")
 @interface ITItemObj : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 @interface ITOptionObj : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
+@interface ITProductObj : ITItemObj
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK9ITUserObj")
+@interface ITUserObj : ITItemObj
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -546,22 +561,24 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
   ITActionEventITActionEventScreenView = 0,
   ITActionEventITActionEventIdentify = 1,
-  ITActionEventITActionEventSignOut = 2,
-  ITActionEventITActionEventProductSearch = 3,
-  ITActionEventITActionEventProductListView = 4,
-  ITActionEventITActionEventProductListFilter = 5,
-  ITActionEventITActionEventProductClick = 6,
-  ITActionEventITActionEventProductView = 7,
-  ITActionEventITActionEventAddToCart = 8,
-  ITActionEventITActionEventRemoveCart = 9,
-  ITActionEventITActionEventViewCart = 10,
-  ITActionEventITActionEventCheckout = 11,
-  ITActionEventITActionEventProductPayment = 12,
-  ITActionEventITActionEventProductPurchase = 13,
-  ITActionEventITActionEventAdvertisingImpression = 14,
-  ITActionEventITActionEventAdvertisingView = 15,
-  ITActionEventITActionEventAdvertisingClick = 16,
-  ITActionEventITActionEventAllowNotification = 17,
+  ITActionEventITActionEventUserRegister = 2,
+  ITActionEventITActionEventSignIn = 3,
+  ITActionEventITActionEventSignOut = 4,
+  ITActionEventITActionEventProductSearch = 5,
+  ITActionEventITActionEventProductListView = 6,
+  ITActionEventITActionEventProductListFilter = 7,
+  ITActionEventITActionEventProductClick = 8,
+  ITActionEventITActionEventProductView = 9,
+  ITActionEventITActionEventAddToCart = 10,
+  ITActionEventITActionEventRemoveCart = 11,
+  ITActionEventITActionEventViewCart = 12,
+  ITActionEventITActionEventProductCheckout = 13,
+  ITActionEventITActionEventProductPayment = 14,
+  ITActionEventITActionEventProductPurchase = 15,
+  ITActionEventITActionEventAdvertisingImpression = 16,
+  ITActionEventITActionEventAdvertisingView = 17,
+  ITActionEventITActionEventAdvertisingClick = 18,
+  ITActionEventITActionEventAllowPushNotification = 19,
 };
 
 @class ITContextObj;
@@ -601,13 +618,26 @@ SWIFT_CLASS("_TtC10InsightSDK10ITExtraObj")
 
 SWIFT_CLASS("_TtC10InsightSDK9ITItemObj")
 @interface ITItemObj : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 @interface ITOptionObj : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
+@interface ITProductObj : ITItemObj
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK9ITUserObj")
+@interface ITUserObj : ITItemObj
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end

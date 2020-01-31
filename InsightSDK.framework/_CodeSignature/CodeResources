@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/InsightSDK-Swift.h</key>
 		<data>
-		7+vXUqvk6KK47DggjwfttqRQ1n0=
+		Cy7e1ihv2W9kir3rDWCNQYEZyx0=
 		</data>
 		<key>Headers/InsightSDK.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		vdQwXg2oX9z21GLu8GwKVsczXNo=
+		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		532EpeKcN8kG+6umn/iegJvjI+E=
+		ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		532EpeKcN8kG+6umn/iegJvjI+E=
+		ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		vdQwXg2oX9z21GLu8GwKVsczXNo=
+		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftdoc</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		vdQwXg2oX9z21GLu8GwKVsczXNo=
+		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,11 +67,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7+vXUqvk6KK47DggjwfttqRQ1n0=
+			Cy7e1ihv2W9kir3rDWCNQYEZyx0=
 			</data>
 			<key>hash2</key>
 			<data>
-			4faEdVKbZez0ld5UUYUlTA8XeOdwlUiH4Wpo9h8oK7M=
+			GlcMdmTINVdfAVa8BMSQ2fjJNSaC7z6L1sGQ7FM1wQU=
 			</data>
 		</dict>
 		<key>Headers/InsightSDK.h</key>
@@ -100,11 +100,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vdQwXg2oX9z21GLu8GwKVsczXNo=
+			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jO2jUTKD8cU02PCiZDdOSZMy+73YvMxWH75RruaWvGg=
+			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -122,11 +122,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			532EpeKcN8kG+6umn/iegJvjI+E=
+			ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
 			</data>
 			<key>hash2</key>
 			<data>
-			96aG/1nvPIOgxntvSHEJOyP/CUQRh+olwmG4mOF98j8=
+			F8WzkQnBasrQwcMmwGeFF6ZlMaX8osi9al8BLJIBp8c=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftdoc</key>
@@ -144,11 +144,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			532EpeKcN8kG+6umn/iegJvjI+E=
+			ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
 			</data>
 			<key>hash2</key>
 			<data>
-			96aG/1nvPIOgxntvSHEJOyP/CUQRh+olwmG4mOF98j8=
+			F8WzkQnBasrQwcMmwGeFF6ZlMaX8osi9al8BLJIBp8c=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftdoc</key>
@@ -166,11 +166,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vdQwXg2oX9z21GLu8GwKVsczXNo=
+			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jO2jUTKD8cU02PCiZDdOSZMy+73YvMxWH75RruaWvGg=
+			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftdoc</key>
@@ -188,11 +188,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vdQwXg2oX9z21GLu8GwKVsczXNo=
+			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jO2jUTKD8cU02PCiZDdOSZMy+73YvMxWH75RruaWvGg=
+			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
