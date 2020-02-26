@@ -4,9 +4,53 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>CardView.nib/objects-13.0+.nib</key>
+		<data>
+		0GYldxD9Imhf5mgiJWO5U8LSpF0=
+		</data>
+		<key>CardView.nib/runtime.nib</key>
+		<data>
+		cSyQFjUp5ICAYYdBBTGAZjq2F3Y=
+		</data>
+		<key>CenteredView.nib/objects-13.0+.nib</key>
+		<data>
+		35Gh9Ut6emKbB5/HRez2z0AZcmA=
+		</data>
+		<key>CenteredView.nib/runtime.nib</key>
+		<data>
+		6The2RKk3+ptG8KhL4n2ZafBrbI=
+		</data>
+		<key>Frameworks/libswiftCore.dylib</key>
+		<data>
+		PYOSTFgrq4yzUMPryWbnKkgR628=
+		</data>
+		<key>Frameworks/libswiftCoreFoundation.dylib</key>
+		<data>
+		UG1heaN6qV3IhKZ0g4lWdSEtJSc=
+		</data>
+		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<data>
+		ljmK/neyyziZ4gKktbyGg+tpJgc=
+		</data>
+		<key>Frameworks/libswiftDarwin.dylib</key>
+		<data>
+		4pBC9TJS8lRwggqnjWYG5gJLku8=
+		</data>
+		<key>Frameworks/libswiftDispatch.dylib</key>
+		<data>
+		tgIcP4VM7QtS/RoH1IYMOkLL3Sg=
+		</data>
+		<key>Frameworks/libswiftFoundation.dylib</key>
+		<data>
+		D9HY0kVBDhcRsnfrSrqfwbIDSUg=
+		</data>
+		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<data>
+		vTWrg8qAKYNpcN12sBcx1C+S+6c=
+		</data>
 		<key>Headers/InsightSDK-Swift.h</key>
 		<data>
-		Cy7e1ihv2W9kir3rDWCNQYEZyx0=
+		FkXcX3IQjQE4dMqOQzagOZriH4Q=
 		</data>
 		<key>Headers/InsightSDK.h</key>
 		<data>
@@ -16,62 +60,211 @@
 		<data>
 		tsFTKIJz9G2pi2k9Wt6AiuXXxyw=
 		</data>
+		<key>MessageView.nib/objects-13.0+.nib</key>
+		<data>
+		bJ9q+1KtlmA4QL5VEqrYJx9xJwc=
+		</data>
+		<key>MessageView.nib/runtime.nib</key>
+		<data>
+		tvCrprH77W1UwsQKpK8OrH4FLZo=
+		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		cNh+wRXirrxCt5QwejGK+bRR+NY=
+		Rzy/7NubaqG0XzHMXZac2MKOBCg=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+		frkdnTijOoLaB8G1oiinYlKq4PM=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		AitN5SSJGtZNuAcIQBcnOz8+rwc=
+		3NBn7TMZV7ms0NNwcBvww6uSgdU=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
+		z1Pj6nUJazSYDtYgZyO8jdSjUZg=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		AitN5SSJGtZNuAcIQBcnOz8+rwc=
+		3NBn7TMZV7ms0NNwcBvww6uSgdU=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
+		z1Pj6nUJazSYDtYgZyO8jdSjUZg=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
-		cNh+wRXirrxCt5QwejGK+bRR+NY=
+		Rzy/7NubaqG0XzHMXZac2MKOBCg=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+		frkdnTijOoLaB8G1oiinYlKq4PM=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftdoc</key>
 		<data>
-		cNh+wRXirrxCt5QwejGK+bRR+NY=
+		Rzy/7NubaqG0XzHMXZac2MKOBCg=
 		</data>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+		frkdnTijOoLaB8G1oiinYlKq4PM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		Hvh41EkK5b7iM1Fzxei5+8JPSs8=
 		</data>
+		<key>StatusLine.nib/objects-13.0+.nib</key>
+		<data>
+		wYx1iUW5guO6blFIsYROAwjDxrk=
+		</data>
+		<key>StatusLine.nib/runtime.nib</key>
+		<data>
+		t9VcKDe90jDv4KlFDEY1QlcJGZg=
+		</data>
+		<key>TabView.nib/objects-13.0+.nib</key>
+		<data>
+		U97vqhY7YwMZj5Yz0WTXWZnJebg=
+		</data>
+		<key>TabView.nib/runtime.nib</key>
+		<data>
+		qxkdtABsrFmEOA4Xc2FdKY2ttdA=
+		</data>
+		<key>icon_close.png</key>
+		<data>
+		NKgGIWn2XGFv5V78xyRCAwFMZb0=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>CardView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0GYldxD9Imhf5mgiJWO5U8LSpF0=
+			</data>
+			<key>hash2</key>
+			<data>
+			wHudE3nqwR2hIW1jjsc2KanS8hDoda86grQ2ZuSNCl4=
+			</data>
+		</dict>
+		<key>CardView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cSyQFjUp5ICAYYdBBTGAZjq2F3Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			aRitLjlcoipyYVJKhHmZNsC3eU55oStFYtZqqlYxmMY=
+			</data>
+		</dict>
+		<key>CenteredView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			35Gh9Ut6emKbB5/HRez2z0AZcmA=
+			</data>
+			<key>hash2</key>
+			<data>
+			1uR0zAFbO9RGHTeK/c3tIE31vWEFBQ5L/KV218Dg1C0=
+			</data>
+		</dict>
+		<key>CenteredView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6The2RKk3+ptG8KhL4n2ZafBrbI=
+			</data>
+			<key>hash2</key>
+			<data>
+			J92Bz4vQ5xwnG9mnjTDBM8QMuKyT2rWCr/KbXMoaVlg=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCore.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PYOSTFgrq4yzUMPryWbnKkgR628=
+			</data>
+			<key>hash2</key>
+			<data>
+			2Ff7c558AvF1YGnG+XZCgyG1gOmgOnnaGMxTDVyKDSo=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreFoundation.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UG1heaN6qV3IhKZ0g4lWdSEtJSc=
+			</data>
+			<key>hash2</key>
+			<data>
+			mT0f+85oOsQFeWddMhccMBesIwM7y52ptLkXO8t9Wwc=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ljmK/neyyziZ4gKktbyGg+tpJgc=
+			</data>
+			<key>hash2</key>
+			<data>
+			nA4fOl2VnKDJoijrmpJoXVqTipiLtvHJM7ABVYBwRXU=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftDarwin.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4pBC9TJS8lRwggqnjWYG5gJLku8=
+			</data>
+			<key>hash2</key>
+			<data>
+			cU0dAWv2St+QBNmTJZS5w2+6rGqI9CVMXS12fzXqHTM=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftDispatch.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tgIcP4VM7QtS/RoH1IYMOkLL3Sg=
+			</data>
+			<key>hash2</key>
+			<data>
+			YFRW40JCquYYyZsZMx7PxvegAgfGnKVy9mM+QhZMaUw=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftFoundation.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			D9HY0kVBDhcRsnfrSrqfwbIDSUg=
+			</data>
+			<key>hash2</key>
+			<data>
+			vVrivnIKP4yx4TN5jIsUXCradnsm5WYebtY6tyyYSqo=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vTWrg8qAKYNpcN12sBcx1C+S+6c=
+			</data>
+			<key>hash2</key>
+			<data>
+			Xd5e32n0WEqiBxuMi4JsMvgUWSVwTpGrWYGBYHsK5LY=
+			</data>
+		</dict>
 		<key>Headers/InsightSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Cy7e1ihv2W9kir3rDWCNQYEZyx0=
+			FkXcX3IQjQE4dMqOQzagOZriH4Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			GlcMdmTINVdfAVa8BMSQ2fjJNSaC7z6L1sGQ7FM1wQU=
+			Qa75kySC+Ty1p/TlWcvGBWY7xPybJiFycm/VRgF2WyY=
 			</data>
 		</dict>
 		<key>Headers/InsightSDK.h</key>
@@ -85,114 +278,136 @@
 			yjB/rfzMRXbsgmRJOR09IsYThAA6UoUt0iIupPya/8o=
 			</data>
 		</dict>
+		<key>MessageView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bJ9q+1KtlmA4QL5VEqrYJx9xJwc=
+			</data>
+			<key>hash2</key>
+			<data>
+			EDQBjfTA8snkKgj0PHXW7nr1yrz1jFmVbHCkounz76k=
+			</data>
+		</dict>
+		<key>MessageView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tvCrprH77W1UwsQKpK8OrH4FLZo=
+			</data>
+			<key>hash2</key>
+			<data>
+			1dB86WKTihZCOdhQO8DRWfa/IDpULPLeZD0UGZj6jbg=
+			</data>
+		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cNh+wRXirrxCt5QwejGK+bRR+NY=
+			Rzy/7NubaqG0XzHMXZac2MKOBCg=
 			</data>
 			<key>hash2</key>
 			<data>
-			cP9TXNy4M9b/KQ9bTRl7TWXcSD3ClgvvwbgrTVnWxyo=
+			We4oAV9W6gpqfUX9juSsYCiuIyuVvZLXZPtlXb2vVu8=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+			frkdnTijOoLaB8G1oiinYlKq4PM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
+			SdLK36EHiVrprY5PFg/A2XIZtH7D6EsZM64/69dYt0A=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AitN5SSJGtZNuAcIQBcnOz8+rwc=
+			3NBn7TMZV7ms0NNwcBvww6uSgdU=
 			</data>
 			<key>hash2</key>
 			<data>
-			3VXA3THbg75eL02x7NDBkFeA1UNnH5K0Nt9gATM1iL8=
+			L0FoyGG9DAOorLELQ6g1Jqi1Q+WrE9vP70cJMRvF2xw=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
+			z1Pj6nUJazSYDtYgZyO8jdSjUZg=
 			</data>
 			<key>hash2</key>
 			<data>
-			F8WzkQnBasrQwcMmwGeFF6ZlMaX8osi9al8BLJIBp8c=
+			OVYkc6Hr02X1xTuTG/GNGeqwm1ztB9M0dx4iRwPIoY0=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AitN5SSJGtZNuAcIQBcnOz8+rwc=
+			3NBn7TMZV7ms0NNwcBvww6uSgdU=
 			</data>
 			<key>hash2</key>
 			<data>
-			3VXA3THbg75eL02x7NDBkFeA1UNnH5K0Nt9gATM1iL8=
+			L0FoyGG9DAOorLELQ6g1Jqi1Q+WrE9vP70cJMRvF2xw=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZNKGKhUwNfHHs3V6RJ5aTr/HJyc=
+			z1Pj6nUJazSYDtYgZyO8jdSjUZg=
 			</data>
 			<key>hash2</key>
 			<data>
-			F8WzkQnBasrQwcMmwGeFF6ZlMaX8osi9al8BLJIBp8c=
+			OVYkc6Hr02X1xTuTG/GNGeqwm1ztB9M0dx4iRwPIoY0=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cNh+wRXirrxCt5QwejGK+bRR+NY=
+			Rzy/7NubaqG0XzHMXZac2MKOBCg=
 			</data>
 			<key>hash2</key>
 			<data>
-			cP9TXNy4M9b/KQ9bTRl7TWXcSD3ClgvvwbgrTVnWxyo=
+			We4oAV9W6gpqfUX9juSsYCiuIyuVvZLXZPtlXb2vVu8=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+			frkdnTijOoLaB8G1oiinYlKq4PM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
+			SdLK36EHiVrprY5PFg/A2XIZtH7D6EsZM64/69dYt0A=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cNh+wRXirrxCt5QwejGK+bRR+NY=
+			Rzy/7NubaqG0XzHMXZac2MKOBCg=
 			</data>
 			<key>hash2</key>
 			<data>
-			cP9TXNy4M9b/KQ9bTRl7TWXcSD3ClgvvwbgrTVnWxyo=
+			We4oAV9W6gpqfUX9juSsYCiuIyuVvZLXZPtlXb2vVu8=
 			</data>
 		</dict>
 		<key>Modules/InsightSDK.swiftmodule/armv7.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4MQ7CJnePoxvS0o9Zjp71VOt6+0=
+			frkdnTijOoLaB8G1oiinYlKq4PM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wilKvtvCTqGXeRxXwcyu7lkt5Sz09GO7S16anjrCByQ=
+			SdLK36EHiVrprY5PFg/A2XIZtH7D6EsZM64/69dYt0A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -204,6 +419,61 @@
 			<key>hash2</key>
 			<data>
 			3NHK31RA+dWMxfsAvpM2M8fjFwDg3CsNhBP68gTxhtM=
+			</data>
+		</dict>
+		<key>StatusLine.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wYx1iUW5guO6blFIsYROAwjDxrk=
+			</data>
+			<key>hash2</key>
+			<data>
+			pZwHo4YjzEkYWYMXJbzYFKXfG++3ycDvnevoXjq2wfk=
+			</data>
+		</dict>
+		<key>StatusLine.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t9VcKDe90jDv4KlFDEY1QlcJGZg=
+			</data>
+			<key>hash2</key>
+			<data>
+			xz2X0dq8gb05RnWgiDz2dhRtVhWVPNlqWwlmvDc2Tg0=
+			</data>
+		</dict>
+		<key>TabView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			U97vqhY7YwMZj5Yz0WTXWZnJebg=
+			</data>
+			<key>hash2</key>
+			<data>
+			ccxoQCLCFIDzFYxj9ieF1cf8o/COHwe+C1a7QWu343E=
+			</data>
+		</dict>
+		<key>TabView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			qxkdtABsrFmEOA4Xc2FdKY2ttdA=
+			</data>
+			<key>hash2</key>
+			<data>
+			0kAKV/9mQFiP/U8AgYJl9x+hVk9KaZscWbwPMsZDQTM=
+			</data>
+		</dict>
+		<key>icon_close.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NKgGIWn2XGFv5V78xyRCAwFMZb0=
+			</data>
+			<key>hash2</key>
+			<data>
+			sbNp7DJXyCLmi9NxKiGqYRt6uTVnMG7jwS+f4D3wDjo=
 			</data>
 		</dict>
 	</dict>

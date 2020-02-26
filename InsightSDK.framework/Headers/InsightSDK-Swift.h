@@ -183,8 +183,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
+@import QuartzCore;
+@import UIKit;
+@import WebKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -201,6 +205,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="InsightSDK",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+
+
+
 
 
 
@@ -239,19 +247,75 @@ SWIFT_CLASS_NAMED("ITAnalytic")
 + (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
 + (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
 + (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
++ (void)resetAnonymousID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSCoder;
+@class UIEvent;
+
+/// The <code>BaseView</code> class is a reusable message view base class that implements some
+/// of the optional SwiftMessages protocols and provides some convenience functions
+/// and a configurable tap handler. Message views do not need to inherit from <code>BaseVew</code>.
+SWIFT_CLASS("_TtC10InsightSDK10ITBaseView")
+@interface ITBaseView : UIView
+/// Fulfills the <code>ITBackgroundViewable</code> protocol and is the target for
+/// the optional <code>tapHandler</code> block. Defaults to <code>self</code>.
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified backgroundView;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+/// IBInspectable access to layoutMarginAdditions.top
+@property (nonatomic) CGFloat topLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.left
+@property (nonatomic) CGFloat leftLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.bottom
+@property (nonatomic) CGFloat bottomLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.right
+@property (nonatomic) CGFloat rightLayoutMarginAddition;
+@property (nonatomic) BOOL collapseLayoutMarginAdditions;
+@property (nonatomic) CGFloat bounceAnimationOffset;
+- (void)updateConstraints;
+@end
+
+
+
+
+@interface ITBaseView (SWIFT_EXTENSION(InsightSDK))
+- (void)layoutSubviews;
 @end
 
 
 SWIFT_CLASS("_TtC10InsightSDK12ITContextObj")
 @interface ITContextObj : NSObject
+- (nonnull instancetype)initWithScreenName:(NSString * _Nonnull)screenName OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithScreenName:(NSString * _Nonnull)screenName campaignName:(NSString * _Nonnull)campaignName campaignSource:(NSString * _Nonnull)campaignSource campaignMedium:(NSString * _Nonnull)campaignMedium campaignTerm:(NSString * _Nonnull)campaignTerm campaignContent:(NSString * _Nonnull)campaignContent OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
+/// A background view that messages can use for rounding all or a subset of corners with squircles
+/// (the smoother method of rounding corners that you see on app icons).
+SWIFT_CLASS("_TtC10InsightSDK20ITCornerRoundingView")
+@interface ITCornerRoundingView : UIView
+/// Specifies the corner radius to use.
+@property (nonatomic) CGFloat cornerRadius;
+/// Set to <code>true</code> for layouts where only the leading corners should be
+/// rounded. For example, the layout in TabView.xib rounds the bottom corners
+/// when displayed from the top and the top corners when displayed from the bottom.
+/// When this property is <code>true</code>, the <code>roundedCorners</code> property will be overwritten
+/// by relevant animators (e.g. <code>TopBottomAnimation</code>).
+@property (nonatomic) BOOL roundsLeadingCorners;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)layoutSubviews;
+@end
+
+
 SWIFT_CLASS("_TtC10InsightSDK9ITDimsObj")
 @interface ITDimsObj : NSObject
+- (nonnull instancetype)initWithItemCategory:(NSString * _Nonnull)itemCategory itemID:(NSString * _Nonnull)itemID itemName:(NSString * _Nonnull)itemName OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -259,6 +323,7 @@ SWIFT_CLASS("_TtC10InsightSDK9ITDimsObj")
 
 SWIFT_CLASS("_TtC10InsightSDK10ITExtraObj")
 @interface ITExtraObj : NSObject
+- (nonnull instancetype)initWithOrderID:(NSString * _Nullable)orderID revenue:(float)revenue discountAmount:(float)discountAmount promotionCode:(NSString * _Nullable)promotionCode tax:(NSString * _Nullable)tax deliveryCost:(float)deliveryCost searchTerm:(NSString * _Nonnull)searchTerm pushNotificationID:(NSString * _Nullable)pushNotificationID OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -270,8 +335,76 @@ SWIFT_CLASS("_TtC10InsightSDK9ITItemObj")
 @end
 
 
+/// A view that adjusts it’s height based on keyboard hide and show notifications.
+/// Pin it to the bottom of the screen using Auto Layout and then pin views that
+/// should avoid the keyboard to the top of it. Supply an instance of this class
+/// on <code>SwiftMessages.Config.keyboardTrackingView</code> or <code>SwiftMessagesSegue.keyboardTrackingView</code>
+/// for automatic keyboard avoidance for the entire SwiftMessages view or view controller.
+SWIFT_CLASS("_TtC10InsightSDK22ITKeyboardTrackingView")
+@interface ITKeyboardTrackingView : UIView
+/// The margin to maintain between the keyboard and the top of the view.
+@property (nonatomic) CGFloat topMargin;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
+@end
+
+@class UILabel;
+@class UIImageView;
+@class UIButton;
+
+SWIFT_CLASS("_TtC10InsightSDK13ITMessageView")
+@interface ITMessageView : ITBaseView <WKNavigationDelegate>
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+/// An optional title label.
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable titleLabel;
+/// An optional body text label.
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable bodyLabel;
+/// An optional icon image view.
+@property (nonatomic, strong) IBOutlet UIImageView * _Nullable iconImageView;
+/// An optional icon label (e.g. for emoji character, icon font, etc.).
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable iconLabel;
+/// An optional button. This buttons’ <code>.TouchUpInside</code> event will automatically
+/// invoke the optional <code>buttonTapHandler</code>, but its fine to add other target
+/// action handlers can be added.
+@property (nonatomic, strong) IBOutlet UIButton * _Nullable button;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+@class WKWebView;
+@class WKNavigationAction;
+@class WKNavigation;
+
+@interface ITMessageView (SWIFT_EXTENSION(InsightSDK))
+- (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(SWIFT_NOESCAPE void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
+- (void)webView:(WKWebView * _Nonnull)webView didStartProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)webView:(WKWebView * _Nonnull)webView didFailNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
+- (void)webView:(WKWebView * _Nonnull)webView didFailProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
+- (void)webView:(WKWebView * _Nonnull)webView didCommitNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
+@end
+
+
+
+
 SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 @interface ITOptionObj : NSObject
+- (nonnull instancetype)initWithOptionName:(NSString * _Nonnull)optionName optionValue:(NSString * _Nonnull)optionValue OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK18ITPhysicsAnimation")
+@interface ITPhysicsAnimation : NSObject
+- (void)adjustMargins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -279,6 +412,93 @@ SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 
 SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
 @interface ITProductObj : ITItemObj
+- (nonnull instancetype)initWithProductID:(NSString * _Nonnull)productID productName:(NSString * _Nonnull)productName productDescription:(NSString * _Nonnull)productDescription SKU:(NSString * _Nonnull)SKU price:(NSInteger)price quantity:(NSInteger)quantity brand:(NSString * _Nonnull)brand category:(NSString * _Nonnull)category variant:(NSString * _Nonnull)variant imageURL:(NSString * _Nonnull)imageURL productURL:(NSString * _Nonnull)productURL coupon:(NSString * _Nonnull)coupon sellerID:(NSString * _Nonnull)sellerID options:(NSArray<ITOptionObj *> * _Nonnull)options OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@class UIViewController;
+
+/// <code>SwiftMessagesSegue</code> is a configurable subclass of <code>UIStoryboardSegue</code> that utilizes
+/// SwiftMessages to present and dismiss modal view controllers. It performs these transitions by
+/// becoming your view controller’s <code>transitioningDelegate</code> and calling SwiftMessage’s <code>show()</code>
+/// and <code>hide()</code> under the hood.
+/// To use <code>SwiftMessagesSegue</code> with Interface Builder, control-drag a segue, then select
+/// “swift messages” from the Segue Type dialog. This configures a default transition. There are
+/// two suggested ways to further configure the transition by setting options on <code>SwiftMessagesSegue</code>.
+/// First, and recommended, you may subclass <code>SwiftMessagesSegue</code> and override <code>init(identifier:source:destination:)</code>.
+/// Subclasses will automatically appear in the segue type dialog using an auto-generated name (for example, the
+/// name for “VeryNiceSegue” would be “very nice”). Second, you may override <code>prepare(for:sender:)</code> in the
+/// presenting view controller and downcast the segue to <code>SwiftMessagesSegue</code>.
+/// <code>SwiftMessagesSegue</code> can be used without an associated storyboard or segue by doing the following in
+/// the presenting view controller.
+/// \code
+/// let destinationVC = ... // make a reference to a destination view controller
+/// let segue = SwiftMessagesSegue(identifier: nil, source: self, destination: destinationVC)
+/// ... // do any configuration here
+/// segue.perform()
+///
+/// \endcodeTo dismiss, call the UIKit API on the presenting view controller:
+/// \code
+/// dismiss(animated: true, completion: nil)
+///
+/// \endcodeIt is not necessary to retain <code>segue</code> because it retains itself until dismissal. However, you can
+/// retain it if you plan to <code>perform()</code> more than once.
+/// note:
+/// Some additional details:
+/// <ol>
+///   <li>
+///     Your view controller’s view will be embedded in a <code>SwiftMessages.BaseView</code> in order to
+///     utilize some SwiftMessages features. This view can be accessed and configured via the
+///     <code>SwiftMessagesSegue.messageView</code> property. For example, you may configure a default drop
+///     shadow by calling <code>segue.messageView.configureDropShadow()</code>.
+///   </li>
+///   <li>
+///     SwiftMessagesSegue provides static default view controller sizing based on device.
+///     However, it is recommended that you specify sizing appropriate for your content using
+///     one of the following methods.
+///     <ol>
+///       <li>
+///         Define sufficient width and height constraints in your view controller.
+///       </li>
+///       <li>
+///         Set <code>preferredContentSize</code> (a.k.a “Use Preferred Explicit Size” in Interface Builder’s
+///         attribute inspector). Zeros are ignored, e.g. <code>CGSize(width: 0, height: 350)</code> only
+///         affects the height.
+///       </li>
+///       <li>
+///         Add explicit width and/or height constraints to <code>segue.messageView.backgroundView</code>.
+///         Note that <code>Layout.topMessage</code> and <code>Layout.bottomMessage</code> are always full screen width.
+///         For other layouts, the there is a maximum 500pt width on iPad (regular horizontal size class)
+///         at 950 priority, which can be overridden by adding higher-priority constraints.
+///       </li>
+///     </ol>
+///   </li>
+/// </ol>
+/// See the “View Controllers” selection in the Demo app for examples.
+SWIFT_CLASS("_TtC10InsightSDK20ITSwiftMessagesSegue")
+@interface ITSwiftMessagesSegue : UIStoryboardSegue
+- (void)perform;
+- (nonnull instancetype)initWithIdentifier:(NSString * _Nullable)identifier source:(UIViewController * _Nonnull)source destination:(UIViewController * _Nonnull)destination OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+@protocol UIViewControllerAnimatedTransitioning;
+
+@interface ITSwiftMessagesSegue (SWIFT_EXTENSION(InsightSDK)) <UIViewControllerTransitioningDelegate>
+- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK20ITTopBottomAnimation")
+@interface ITTopBottomAnimation : NSObject
+- (void)adjustMargins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -286,9 +506,24 @@ SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
 
 SWIFT_CLASS("_TtC10InsightSDK9ITUserObj")
 @interface ITUserObj : ITItemObj
+- (nonnull instancetype)initWithUserID:(NSString * _Nonnull)userID username:(NSString * _Nonnull)username firstName:(NSString * _Nonnull)firstName lastName:(NSString * _Nonnull)lastName address:(NSString * _Nonnull)address avatar:(NSString * _Nonnull)avatar birthday:(NSString * _Nonnull)birthday email:(NSString * _Nonnull)email gender:(NSString * _Nonnull)gender phone:(NSString * _Nonnull)phone customerID:(NSString * _Nonnull)customerID OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
+
+SWIFT_CLASS("_TtC10InsightSDK22ITWindowViewController")
+@interface ITWindowViewController : UIViewController
+@property (nonatomic, readonly) BOOL shouldAutorotate;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+@property (nonatomic, readonly) BOOL prefersStatusBarHidden;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+
+
 
 
 
@@ -341,6 +576,10 @@ SWIFT_CLASS("_TtC10InsightSDK15SessionDelegate")
 - (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
 - (void)URLSession:(NSURLSession * _Nonnull)session taskIsWaitingForConnectivity:(NSURLSessionTask * _Nonnull)task SWIFT_AVAILABILITY(watchos,introduced=4.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13);
 @end
+
+
+
+
 
 
 
@@ -535,8 +774,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
+@import QuartzCore;
+@import UIKit;
+@import WebKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -553,6 +796,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="InsightSDK",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+
+
+
 
 
 
@@ -591,19 +838,75 @@ SWIFT_CLASS_NAMED("ITAnalytic")
 + (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
 + (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
 + (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
++ (void)resetAnonymousID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSCoder;
+@class UIEvent;
+
+/// The <code>BaseView</code> class is a reusable message view base class that implements some
+/// of the optional SwiftMessages protocols and provides some convenience functions
+/// and a configurable tap handler. Message views do not need to inherit from <code>BaseVew</code>.
+SWIFT_CLASS("_TtC10InsightSDK10ITBaseView")
+@interface ITBaseView : UIView
+/// Fulfills the <code>ITBackgroundViewable</code> protocol and is the target for
+/// the optional <code>tapHandler</code> block. Defaults to <code>self</code>.
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified backgroundView;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+/// IBInspectable access to layoutMarginAdditions.top
+@property (nonatomic) CGFloat topLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.left
+@property (nonatomic) CGFloat leftLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.bottom
+@property (nonatomic) CGFloat bottomLayoutMarginAddition;
+/// IBInspectable access to layoutMarginAdditions.right
+@property (nonatomic) CGFloat rightLayoutMarginAddition;
+@property (nonatomic) BOOL collapseLayoutMarginAdditions;
+@property (nonatomic) CGFloat bounceAnimationOffset;
+- (void)updateConstraints;
+@end
+
+
+
+
+@interface ITBaseView (SWIFT_EXTENSION(InsightSDK))
+- (void)layoutSubviews;
 @end
 
 
 SWIFT_CLASS("_TtC10InsightSDK12ITContextObj")
 @interface ITContextObj : NSObject
+- (nonnull instancetype)initWithScreenName:(NSString * _Nonnull)screenName OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithScreenName:(NSString * _Nonnull)screenName campaignName:(NSString * _Nonnull)campaignName campaignSource:(NSString * _Nonnull)campaignSource campaignMedium:(NSString * _Nonnull)campaignMedium campaignTerm:(NSString * _Nonnull)campaignTerm campaignContent:(NSString * _Nonnull)campaignContent OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
+/// A background view that messages can use for rounding all or a subset of corners with squircles
+/// (the smoother method of rounding corners that you see on app icons).
+SWIFT_CLASS("_TtC10InsightSDK20ITCornerRoundingView")
+@interface ITCornerRoundingView : UIView
+/// Specifies the corner radius to use.
+@property (nonatomic) CGFloat cornerRadius;
+/// Set to <code>true</code> for layouts where only the leading corners should be
+/// rounded. For example, the layout in TabView.xib rounds the bottom corners
+/// when displayed from the top and the top corners when displayed from the bottom.
+/// When this property is <code>true</code>, the <code>roundedCorners</code> property will be overwritten
+/// by relevant animators (e.g. <code>TopBottomAnimation</code>).
+@property (nonatomic) BOOL roundsLeadingCorners;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)layoutSubviews;
+@end
+
+
 SWIFT_CLASS("_TtC10InsightSDK9ITDimsObj")
 @interface ITDimsObj : NSObject
+- (nonnull instancetype)initWithItemCategory:(NSString * _Nonnull)itemCategory itemID:(NSString * _Nonnull)itemID itemName:(NSString * _Nonnull)itemName OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -611,6 +914,7 @@ SWIFT_CLASS("_TtC10InsightSDK9ITDimsObj")
 
 SWIFT_CLASS("_TtC10InsightSDK10ITExtraObj")
 @interface ITExtraObj : NSObject
+- (nonnull instancetype)initWithOrderID:(NSString * _Nullable)orderID revenue:(float)revenue discountAmount:(float)discountAmount promotionCode:(NSString * _Nullable)promotionCode tax:(NSString * _Nullable)tax deliveryCost:(float)deliveryCost searchTerm:(NSString * _Nonnull)searchTerm pushNotificationID:(NSString * _Nullable)pushNotificationID OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -622,8 +926,76 @@ SWIFT_CLASS("_TtC10InsightSDK9ITItemObj")
 @end
 
 
+/// A view that adjusts it’s height based on keyboard hide and show notifications.
+/// Pin it to the bottom of the screen using Auto Layout and then pin views that
+/// should avoid the keyboard to the top of it. Supply an instance of this class
+/// on <code>SwiftMessages.Config.keyboardTrackingView</code> or <code>SwiftMessagesSegue.keyboardTrackingView</code>
+/// for automatic keyboard avoidance for the entire SwiftMessages view or view controller.
+SWIFT_CLASS("_TtC10InsightSDK22ITKeyboardTrackingView")
+@interface ITKeyboardTrackingView : UIView
+/// The margin to maintain between the keyboard and the top of the view.
+@property (nonatomic) CGFloat topMargin;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
+@end
+
+@class UILabel;
+@class UIImageView;
+@class UIButton;
+
+SWIFT_CLASS("_TtC10InsightSDK13ITMessageView")
+@interface ITMessageView : ITBaseView <WKNavigationDelegate>
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+/// An optional title label.
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable titleLabel;
+/// An optional body text label.
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable bodyLabel;
+/// An optional icon image view.
+@property (nonatomic, strong) IBOutlet UIImageView * _Nullable iconImageView;
+/// An optional icon label (e.g. for emoji character, icon font, etc.).
+@property (nonatomic, strong) IBOutlet UILabel * _Nullable iconLabel;
+/// An optional button. This buttons’ <code>.TouchUpInside</code> event will automatically
+/// invoke the optional <code>buttonTapHandler</code>, but its fine to add other target
+/// action handlers can be added.
+@property (nonatomic, strong) IBOutlet UIButton * _Nullable button;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+@class WKWebView;
+@class WKNavigationAction;
+@class WKNavigation;
+
+@interface ITMessageView (SWIFT_EXTENSION(InsightSDK))
+- (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(SWIFT_NOESCAPE void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
+- (void)webView:(WKWebView * _Nonnull)webView didStartProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)webView:(WKWebView * _Nonnull)webView didFailNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
+- (void)webView:(WKWebView * _Nonnull)webView didFailProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
+- (void)webView:(WKWebView * _Nonnull)webView didCommitNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
+@end
+
+
+
+
 SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 @interface ITOptionObj : NSObject
+- (nonnull instancetype)initWithOptionName:(NSString * _Nonnull)optionName optionValue:(NSString * _Nonnull)optionValue OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK18ITPhysicsAnimation")
+@interface ITPhysicsAnimation : NSObject
+- (void)adjustMargins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -631,6 +1003,93 @@ SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
 
 SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
 @interface ITProductObj : ITItemObj
+- (nonnull instancetype)initWithProductID:(NSString * _Nonnull)productID productName:(NSString * _Nonnull)productName productDescription:(NSString * _Nonnull)productDescription SKU:(NSString * _Nonnull)SKU price:(NSInteger)price quantity:(NSInteger)quantity brand:(NSString * _Nonnull)brand category:(NSString * _Nonnull)category variant:(NSString * _Nonnull)variant imageURL:(NSString * _Nonnull)imageURL productURL:(NSString * _Nonnull)productURL coupon:(NSString * _Nonnull)coupon sellerID:(NSString * _Nonnull)sellerID options:(NSArray<ITOptionObj *> * _Nonnull)options OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@class UIViewController;
+
+/// <code>SwiftMessagesSegue</code> is a configurable subclass of <code>UIStoryboardSegue</code> that utilizes
+/// SwiftMessages to present and dismiss modal view controllers. It performs these transitions by
+/// becoming your view controller’s <code>transitioningDelegate</code> and calling SwiftMessage’s <code>show()</code>
+/// and <code>hide()</code> under the hood.
+/// To use <code>SwiftMessagesSegue</code> with Interface Builder, control-drag a segue, then select
+/// “swift messages” from the Segue Type dialog. This configures a default transition. There are
+/// two suggested ways to further configure the transition by setting options on <code>SwiftMessagesSegue</code>.
+/// First, and recommended, you may subclass <code>SwiftMessagesSegue</code> and override <code>init(identifier:source:destination:)</code>.
+/// Subclasses will automatically appear in the segue type dialog using an auto-generated name (for example, the
+/// name for “VeryNiceSegue” would be “very nice”). Second, you may override <code>prepare(for:sender:)</code> in the
+/// presenting view controller and downcast the segue to <code>SwiftMessagesSegue</code>.
+/// <code>SwiftMessagesSegue</code> can be used without an associated storyboard or segue by doing the following in
+/// the presenting view controller.
+/// \code
+/// let destinationVC = ... // make a reference to a destination view controller
+/// let segue = SwiftMessagesSegue(identifier: nil, source: self, destination: destinationVC)
+/// ... // do any configuration here
+/// segue.perform()
+///
+/// \endcodeTo dismiss, call the UIKit API on the presenting view controller:
+/// \code
+/// dismiss(animated: true, completion: nil)
+///
+/// \endcodeIt is not necessary to retain <code>segue</code> because it retains itself until dismissal. However, you can
+/// retain it if you plan to <code>perform()</code> more than once.
+/// note:
+/// Some additional details:
+/// <ol>
+///   <li>
+///     Your view controller’s view will be embedded in a <code>SwiftMessages.BaseView</code> in order to
+///     utilize some SwiftMessages features. This view can be accessed and configured via the
+///     <code>SwiftMessagesSegue.messageView</code> property. For example, you may configure a default drop
+///     shadow by calling <code>segue.messageView.configureDropShadow()</code>.
+///   </li>
+///   <li>
+///     SwiftMessagesSegue provides static default view controller sizing based on device.
+///     However, it is recommended that you specify sizing appropriate for your content using
+///     one of the following methods.
+///     <ol>
+///       <li>
+///         Define sufficient width and height constraints in your view controller.
+///       </li>
+///       <li>
+///         Set <code>preferredContentSize</code> (a.k.a “Use Preferred Explicit Size” in Interface Builder’s
+///         attribute inspector). Zeros are ignored, e.g. <code>CGSize(width: 0, height: 350)</code> only
+///         affects the height.
+///       </li>
+///       <li>
+///         Add explicit width and/or height constraints to <code>segue.messageView.backgroundView</code>.
+///         Note that <code>Layout.topMessage</code> and <code>Layout.bottomMessage</code> are always full screen width.
+///         For other layouts, the there is a maximum 500pt width on iPad (regular horizontal size class)
+///         at 950 priority, which can be overridden by adding higher-priority constraints.
+///       </li>
+///     </ol>
+///   </li>
+/// </ol>
+/// See the “View Controllers” selection in the Demo app for examples.
+SWIFT_CLASS("_TtC10InsightSDK20ITSwiftMessagesSegue")
+@interface ITSwiftMessagesSegue : UIStoryboardSegue
+- (void)perform;
+- (nonnull instancetype)initWithIdentifier:(NSString * _Nullable)identifier source:(UIViewController * _Nonnull)source destination:(UIViewController * _Nonnull)destination OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+@protocol UIViewControllerAnimatedTransitioning;
+
+@interface ITSwiftMessagesSegue (SWIFT_EXTENSION(InsightSDK)) <UIViewControllerTransitioningDelegate>
+- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC10InsightSDK20ITTopBottomAnimation")
+@interface ITTopBottomAnimation : NSObject
+- (void)adjustMargins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -638,9 +1097,24 @@ SWIFT_CLASS("_TtC10InsightSDK12ITProductObj")
 
 SWIFT_CLASS("_TtC10InsightSDK9ITUserObj")
 @interface ITUserObj : ITItemObj
+- (nonnull instancetype)initWithUserID:(NSString * _Nonnull)userID username:(NSString * _Nonnull)username firstName:(NSString * _Nonnull)firstName lastName:(NSString * _Nonnull)lastName address:(NSString * _Nonnull)address avatar:(NSString * _Nonnull)avatar birthday:(NSString * _Nonnull)birthday email:(NSString * _Nonnull)email gender:(NSString * _Nonnull)gender phone:(NSString * _Nonnull)phone customerID:(NSString * _Nonnull)customerID OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
+
+SWIFT_CLASS("_TtC10InsightSDK22ITWindowViewController")
+@interface ITWindowViewController : UIViewController
+@property (nonatomic, readonly) BOOL shouldAutorotate;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+@property (nonatomic, readonly) BOOL prefersStatusBarHidden;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+
+
 
 
 
@@ -693,6 +1167,10 @@ SWIFT_CLASS("_TtC10InsightSDK15SessionDelegate")
 - (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
 - (void)URLSession:(NSURLSession * _Nonnull)session taskIsWaitingForConnectivity:(NSURLSessionTask * _Nonnull)task SWIFT_AVAILABILITY(watchos,introduced=4.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13);
 @end
+
+
+
+
 
 
 
