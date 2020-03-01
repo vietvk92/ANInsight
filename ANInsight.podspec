@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name          = "ANInsight"
-  spec.version       = "0.0.8"
+  spec.version       = "0.0.9"
   spec.summary       = "Insight Tracking framework."
   spec.description   = "This is a Insight Tracking framework that was made by ANTS"
   spec.homepage      = "https://antsprogrammatic.com"

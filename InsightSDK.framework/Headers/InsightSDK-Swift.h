@@ -242,11 +242,11 @@ typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
 @class ITDimsObj;
 @class ITItemObj;
 
-SWIFT_CLASS_NAMED("ITAnalytic")
-@interface ITAnalytics : NSObject
+SWIFT_CLASS("_TtC10InsightSDK10ITAnalytic")
+@interface ITAnalytic : NSObject
 + (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
-+ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
-+ (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
++ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject items:(NSArray<ITItemObj *> * _Nullable)items;
++ (void)logEventCustomWithActionName:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
 + (void)resetAnonymousID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -833,11 +833,11 @@ typedef SWIFT_ENUM(NSInteger, ITActionEvent, closed) {
 @class ITDimsObj;
 @class ITItemObj;
 
-SWIFT_CLASS_NAMED("ITAnalytic")
-@interface ITAnalytics : NSObject
+SWIFT_CLASS("_TtC10InsightSDK10ITAnalytic")
+@interface ITAnalytic : NSObject
 + (void)configureWithPortalID:(NSString * _Nullable)portalID propertyID:(NSString * _Nullable)propertyID;
-+ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject itemsObject:(NSArray<ITItemObj *> * _Nullable)items;
-+ (void)logEventCustomWithAction:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
++ (void)logEventWithAction:(enum ITActionEvent)action contextObject:(ITContextObj * _Nullable)contextObject extraObject:(ITExtraObj * _Nullable)extraObject dimsObject:(NSArray<ITDimsObj *> * _Nullable)dimsObject items:(NSArray<ITItemObj *> * _Nullable)items;
++ (void)logEventCustomWithActionName:(NSString * _Nonnull)actionName category:(NSString * _Nonnull)category;
 + (void)resetAnonymousID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
