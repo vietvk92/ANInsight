@@ -2,8 +2,8 @@
 //  InsightSDK.h
 //  InsightSDK
 //
-//  Created by KhoiViet on 12/19/19.
-//  Copyright © 2019 KhoiViet. All rights reserved.
+//  Created by ANTS-KhoiViet on 3/4/20.
+//  Copyright © 2020 ANTSOMI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -377,6 +377,8 @@ SWIFT_CLASS("_TtC10InsightSDK13ITMessageView")
 
 
 
+
+
 @class WKWebView;
 @class WKNavigationAction;
 @class WKNavigation;
@@ -389,8 +391,6 @@ SWIFT_CLASS("_TtC10InsightSDK13ITMessageView")
 - (void)webView:(WKWebView * _Nonnull)webView didCommitNavigation:(WKNavigation * _Null_unspecified)navigation;
 - (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC10InsightSDK11ITOptionObj")
